@@ -1,0 +1,271 @@
+/* 小企打字通 - 企鹅主题样式 */
+
+/* 企鹅主题配色 */
+:root {
+  --penguin-blue: #87CEEB;
+  --penguin-blue-light: #B0E0E6;
+  --penguin-blue-dark: #4682B4;
+  --penguin-white: #F8F8FF;
+  --penguin-orange: #FFA500;
+  --penguin-orange-light: #FFB84D;
+  --penguin-black: #2F4F4F;
+  --penguin-gray: #708090;
+  
+  /* 渐变背景 */
+  --penguin-bg-primary: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #E0F6FF 100%);
+  --penguin-bg-secondary: linear-gradient(45deg, #F0F8FF 0%, #E6F3FF 100%);
+  --penguin-bg-card: rgba(248, 248, 255, 0.9);
+}
+
+/* 企鹅主题背景 */
+.penguin-bg {
+  background: var(--penguin-bg-primary);
+  min-height: 100vh;
+}
+
+/* 企鹅主题卡片 */
+.penguin-card {
+  background: var(--penguin-bg-card);
+  border: 2px solid var(--penguin-blue-light);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(135, 206, 235, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.penguin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(135, 206, 235, 0.4);
+  border-color: var(--penguin-blue);
+}
+
+/* 企鹅主题按钮 */
+.penguin-button {
+  background: linear-gradient(45deg, var(--penguin-blue), var(--penguin-blue-light));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+}
+
+.penguin-button:hover {
+  background: linear-gradient(45deg, var(--penguin-blue-dark), var(--penguin-blue));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(135, 206, 235, 0.6);
+}
+
+.penguin-button-secondary {
+  background: linear-gradient(45deg, var(--penguin-orange), var(--penguin-orange-light));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+}
+
+.penguin-button-secondary:hover {
+  background: linear-gradient(45deg, #FF8C00, var(--penguin-orange));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 165, 0, 0.6);
+}
+
+/* 企鹅主题标题 */
+.penguin-title {
+  background: linear-gradient(45deg, var(--penguin-blue-dark), var(--penguin-blue), var(--penguin-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* 企鹅动画效果 */
+.penguin-float {
+  animation: penguinFloat 3s ease-in-out infinite;
+}
+
+@keyframes penguinFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.penguin-bounce {
+  animation: penguinBounce 2s ease-in-out infinite;
+}
+
+@keyframes penguinBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.penguin-wiggle {
+  animation: penguinWiggle 1s ease-in-out infinite;
+}
+
+@keyframes penguinWiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+/* 企鹅主题输入框 */
+.penguin-input {
+  border: 2px solid var(--penguin-blue-light);
+  border-radius: 15px;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  background: var(--penguin-white);
+  transition: all 0.3s ease;
+}
+
+.penguin-input:focus {
+  outline: none;
+  border-color: var(--penguin-blue);
+  box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.3);
+}
+
+/* 企鹅主题进度条 */
+.penguin-progress {
+  background: var(--penguin-blue-light);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.penguin-progress-fill {
+  background: linear-gradient(90deg, var(--penguin-blue), var(--penguin-orange));
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* 企鹅主题徽章 */
+.penguin-badge {
+  background: linear-gradient(45deg, var(--penguin-orange), var(--penguin-orange-light));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* 企鹅主题统计卡片 */
+.penguin-stat-card {
+  background: var(--penguin-bg-card);
+  border: 2px solid var(--penguin-blue-light);
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.penguin-stat-card:hover {
+  transform: scale(1.05);
+  border-color: var(--penguin-blue);
+}
+
+.penguin-stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--penguin-blue-dark);
+}
+
+.penguin-stat-label {
+  font-size: 0.9rem;
+  color: var(--penguin-gray);
+  margin-top: 0.5rem;
+}
+
+/* 企鹅主题成功状态 */
+.penguin-success {
+  background: linear-gradient(45deg, #32CD32, #90EE90);
+  color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+  animation: penguinSuccess 0.6s ease-out;
+}
+
+@keyframes penguinSuccess {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 企鹅主题错误状态 */
+.penguin-error {
+  background: linear-gradient(45deg, #FF6B6B, #FFB3B3);
+  color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+  animation: penguinShake 0.6s ease-out;
+}
+
+@keyframes penguinShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .penguin-title {
+    font-size: 2rem;
+  }
+  
+  .penguin-card {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+  
+  .penguin-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+

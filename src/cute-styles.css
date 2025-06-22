@@ -1,0 +1,309 @@
+/* 小小打字家 - 可爱风格样式 */
+
+/* 可爱的配色方案 */
+:root {
+  /* 主要颜色 - 温暖的粉色和蓝色 */
+  --cute-primary: #FF6B9D;
+  --cute-primary-light: #FFB3D1;
+  --cute-primary-dark: #E55A8A;
+  
+  /* 次要颜色 - 柔和的蓝色 */
+  --cute-secondary: #4ECDC4;
+  --cute-secondary-light: #7EDDD6;
+  --cute-secondary-dark: #3BB5AE;
+  
+  /* 背景颜色 - 温暖的渐变 */
+  --cute-bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --cute-bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --cute-bg-soft: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  --cute-bg-card: rgba(255, 255, 255, 0.95);
+  
+  /* 文字颜色 */
+  --cute-text-primary: #2D3748;
+  --cute-text-secondary: #4A5568;
+  --cute-text-light: #718096;
+  
+  /* 阴影 */
+  --cute-shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --cute-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --cute-shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.2);
+  
+  /* 圆角 */
+  --cute-radius-small: 12px;
+  --cute-radius-medium: 20px;
+  --cute-radius-large: 30px;
+}
+
+/* 全局样式优化 */
+body {
+  background: var(--cute-bg-primary);
+  font-family: 'Comic Sans MS', 'Microsoft YaHei', sans-serif;
+  color: var(--cute-text-primary);
+}
+
+/* 可爱的按钮样式 */
+.cute-button {
+  background: linear-gradient(45deg, var(--cute-primary), var(--cute-primary-light));
+  border: none;
+  border-radius: var(--cute-radius-medium);
+  padding: 12px 24px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--cute-shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.cute-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cute-shadow-medium);
+  background: linear-gradient(45deg, var(--cute-primary-dark), var(--cute-primary));
+}
+
+.cute-button:active {
+  transform: translateY(0);
+}
+
+.cute-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.cute-button:hover::before {
+  left: 100%;
+}
+
+/* 可爱的卡片样式 */
+.cute-card {
+  background: var(--cute-bg-card);
+  border-radius: var(--cute-radius-large);
+  padding: 24px;
+  box-shadow: var(--cute-shadow-soft);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cute-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--cute-shadow-medium);
+}
+
+/* 可爱的标题样式 */
+.cute-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, var(--cute-primary), var(--cute-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 可爱的输入框样式 */
+.cute-input {
+  border: 3px solid var(--cute-primary-light);
+  border-radius: var(--cute-radius-medium);
+  padding: 16px 20px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  box-shadow: var(--cute-shadow-soft);
+}
+
+.cute-input:focus {
+  outline: none;
+  border-color: var(--cute-primary);
+  box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.2);
+  transform: scale(1.02);
+}
+
+/* 可爱的进度条样式 */
+.cute-progress {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--cute-radius-small);
+  height: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cute-progress-bar {
+  background: linear-gradient(90deg, var(--cute-primary), var(--cute-secondary));
+  height: 100%;
+  border-radius: var(--cute-radius-small);
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.cute-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 可爱的图标样式 */
+.cute-icon {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.cute-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 可爱的徽章样式 */
+.cute-badge {
+  background: linear-gradient(45deg, var(--cute-secondary), var(--cute-secondary-light));
+  color: white;
+  padding: 6px 12px;
+  border-radius: var(--cute-radius-small);
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: var(--cute-shadow-soft);
+  display: inline-block;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* 可爱的容器样式 */
+.cute-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 可爱的网格布局 */
+.cute-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* 可爱的动画效果 */
+.cute-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cute-scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 可爱的悬浮效果 */
+.cute-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 可爱的脉冲效果 */
+.cute-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .cute-title {
+    font-size: 2rem;
+  }
+  
+  .cute-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .cute-card {
+    padding: 16px;
+  }
+  
+  .cute-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 特殊效果 */
+.cute-sparkle {
+  position: relative;
+}
+
+.cute-sparkle::before,
+.cute-sparkle::after {
+  content: '✨';
+  position: absolute;
+  font-size: 20px;
+  animation: sparkle 2s infinite;
+}
+
+.cute-sparkle::before {
+  top: -10px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.cute-sparkle::after {
+  bottom: -10px;
+  right: -10px;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
