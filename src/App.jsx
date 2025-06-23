@@ -5,6 +5,7 @@ import LessonSelectPage from './pages/LessonSelectPage';
 import PracticePage from './pages/PracticePage';
 import ProgressPage from './pages/ProgressPage';
 import FingerPracticeGame from './pages/FingerPracticeGame';
+import MathGame from './pages/MathGame';
 import './App.css';
 import './penguin-theme.css';
 
@@ -24,6 +25,10 @@ const AppContent = () => {
 
   const handleStartFingerPractice = () => {
     actions.setPage('fingerPractice');
+  };
+
+  const handleStartMathGame = () => {
+    actions.setPage('mathGame');
   };
 
   const handleBackToWelcome = () => {
@@ -53,6 +58,7 @@ const AppContent = () => {
             onStartPractice={handleStartPractice}
             onViewProgress={handleViewProgress}
             onStartFingerPractice={handleStartFingerPractice}
+            onStartMathGame={handleStartMathGame}
             userStats={userStats}
           />
         );
@@ -91,12 +97,20 @@ const AppContent = () => {
           />
         );
       
+      case 'mathGame':
+        return (
+          <MathGame
+            onBack={handleBackToWelcome}
+          />
+        );
+      
       default:
         return (
           <WelcomePage
             onStartPractice={handleStartPractice}
             onViewProgress={handleViewProgress}
             onStartFingerPractice={handleStartFingerPractice}
+            onStartMathGame={handleStartMathGame}
             userStats={userStats}
           />
         );

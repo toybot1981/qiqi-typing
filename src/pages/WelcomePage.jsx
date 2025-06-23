@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Play, BarChart3, Star, Heart, Sparkles } from 'lucide-react';
 
-const WelcomePage = ({ onStartPractice, onViewProgress, onStartFingerPractice, userStats }) => {
+const WelcomePage = ({ onStartPractice, onViewProgress, onStartFingerPractice, onStartMathGame, userStats }) => {
   return (
     <div className="penguin-bg p-4 relative overflow-hidden">
       {/* 可爱的背景装饰 */}
@@ -93,6 +93,15 @@ const WelcomePage = ({ onStartPractice, onViewProgress, onStartFingerPractice, u
             <span className="text-2xl">🎹</span>
             指法练习
             <span className="text-2xl">✨</span>
+          </button>
+          
+          <button 
+            onClick={onStartMathGame}
+            className="penguin-button flex items-center gap-3 text-xl bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600"
+          >
+            <span className="text-2xl">🧮</span>
+            数学游戏
+            <span className="text-2xl">🎯</span>
           </button>
           
           <button 
