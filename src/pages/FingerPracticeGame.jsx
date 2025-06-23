@@ -101,8 +101,8 @@ const FingerPracticeGame = ({ onBack }) => {
       }
       
       .hand-display svg {
-        width: 80px !important;
-        height: 100px !important;
+        width: 60px !important;
+        height: 75px !important;
       }
     }
 
@@ -118,8 +118,8 @@ const FingerPracticeGame = ({ onBack }) => {
       }
       
       .hand-display svg {
-        width: 120px !important;
-        height: 140px !important;
+        width: 90px !important;
+        height: 105px !important;
       }
     }
 
@@ -135,8 +135,8 @@ const FingerPracticeGame = ({ onBack }) => {
       }
       
       .hand-display svg {
-        width: 110px !important;
-        height: 130px !important;
+        width: 85px !important;
+        height: 100px !important;
       }
     }
 
@@ -152,8 +152,8 @@ const FingerPracticeGame = ({ onBack }) => {
       }
       
       .hand-display svg {
-        width: 120px !important;
-        height: 140px !important;
+        width: 90px !important;
+        height: 105px !important;
       }
     }
 
@@ -612,19 +612,16 @@ const FingerPracticeGame = ({ onBack }) => {
       `}</style>
 
       <div className="max-w-6xl mx-auto h-full flex flex-col">
-        {/* 返回按钮 */}
-        <div className="mb-1">
+        {/* 顶部导航栏 - 返回按钮和标题在一行 */}
+        <div className="flex items-center justify-between mb-2">
           <button
             onClick={onBack}
             className="bg-white/20 text-white px-3 py-1 rounded-lg hover:bg-white/30 transition-colors backdrop-blur-sm text-sm"
           >
             ← 返回主页
           </button>
-        </div>
-
-        {/* 标题区域 */}
-        <div className="text-center mb-2">
-          <div className="flex items-center justify-center">
+          
+          <div className="flex items-center">
             <img 
               src="/images/penguins/penguin_front_view.png" 
               alt="指法练习企鹅" 
@@ -639,6 +636,8 @@ const FingerPracticeGame = ({ onBack }) => {
               className="w-8 h-8 ml-2 floating-penguin"
             />
           </div>
+          
+          <div className="w-20"></div> {/* 占位元素，保持标题居中 */}
         </div>
 
         {/* 说明界面 */}
