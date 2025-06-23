@@ -49,12 +49,16 @@ const KEYBOARD_LAYOUT = [
 const PRACTICE_LETTERS = [
   // 基准行（最重要）
   'a', 's', 'd', 'f', 'j', 'k', 'l', ';',
-  // 空格键练习
-  ' ', ' ', ' ',
+  // 插入一个空格练习
+  ' ',
   // 上排常用字母
   'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
+  // 再插入一个空格练习
+  ' ',
   // 下排字母
   'z', 'x', 'c', 'v', 'b', 'n', 'm',
+  // 最后一个空格练习
+  ' ',
   // 数字
   '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
 ];
@@ -247,16 +251,19 @@ const FingerPracticeGame = ({ onBack }) => {
 
   // 获取键盘样式（响应式设计）
   const getKeyStyle = (key) => {
-    const isCurrentTarget = currentLetter && (
+    // 检查是否是当前目标键
+    const isCurrentTarget = (
       (currentLetter === ' ' && key === 'Space') ||
       (currentLetter !== ' ' && key.toLowerCase() === currentLetter.toLowerCase())
     );
-    const isPressed = pressedKeys.has(key.toLowerCase()) || pressedKeys.has(key);
-    const isAnimating = animatingKeys.has(key.toLowerCase()) || animatingKeys.has(key);
-    const isError = errorKeys.has(key.toLowerCase()) || errorKeys.has(key);
     
-    const baseColor = FINGER_COLORS[KEY_TO_FINGER[key.toLowerCase()]] || '#E5E7EB';
+    // 检查按键状态时需要处理空格键的特殊情况
+    const checkKey = key === 'Space' ? ' ' : key.toLowerCase();
+    const isPressed = pressedKeys.has(checkKey);
+    const isAnimating = animatingKeys.has(checkKey);
+    const isError = errorKeys.has(checkKey);
     
+    const baseColor = FINGER_COLORS[KEY_TO_FINGER[key.toLowerCase()]] || '#E5E7EB';    
     const style = {
       backgroundColor: baseColor,
       color: '#374151',
@@ -485,14 +492,25 @@ const FingerPracticeGame = ({ onBack }) => {
   const handleKeyDown = useCallback((event) => {
     if (!gameStarted) return;
     
-    const key = event.key.toLowerCase();
-    setPressedKeys(prev => new Set([...prev, key]));
+    // 防止默认行为（特别是空格键滚动页面）
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+    
+    const key = event.key;
+    const normalizedKey = key === ' ' ? ' ' : key.toLowerCase();
+    
+    setPressedKeys(prev => new Set([...prev, normalizedKey]));
     
     setTotalKeys(prev => prev + 1);
     
-    if (key === currentLetter) {
+    // 检查是否是正确的按键
+    const isCorrect = (currentLetter === ' ' && key === ' ') || 
+                     (currentLetter !== ' ' && normalizedKey === currentLetter.toLowerCase());
+    
+    if (isCorrect) {
       // 正确按键
-      triggerKeyAnimation(key, true);
+      triggerKeyAnimation(normalizedKey, true);
       setScore(prev => prev + 10 + combo * 2);
       setCorrectKeys(prev => prev + 1);
       setCombo(prev => {
@@ -507,17 +525,19 @@ const FingerPracticeGame = ({ onBack }) => {
       }, 300);
     } else {
       // 错误按键
-      triggerKeyAnimation(key, false);
+      triggerKeyAnimation(normalizedKey, false);
       setCombo(0);
     }
   }, [gameStarted, currentLetter, combo]);
 
   // 处理键盘释放
   const handleKeyUp = useCallback((event) => {
-    const key = event.key.toLowerCase();
+    const key = event.key;
+    const normalizedKey = key === ' ' ? ' ' : key.toLowerCase();
+    
     setPressedKeys(prev => {
       const newSet = new Set(prev);
-      newSet.delete(key);
+      newSet.delete(normalizedKey);
       return newSet;
     });
   }, []);
